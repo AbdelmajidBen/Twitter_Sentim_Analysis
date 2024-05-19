@@ -76,12 +76,11 @@ def testing(request):
         # Initialize Spark session
         spark = SparkSession.builder \
             .appName("Sentiment Analysis") \
-            .config("spark.executor.memory", "16g") \
             .getOrCreate()
 
         try:
             # Load the Spark ML model and pipeline
-            model_path = "/Users/mac/Desktop/big_data/ML/logistic_regression_model"  # Update with actual path to model
+            model_path = "ML/logistic_regression_model"  # Update with actual path to model
             model = PipelineModel.load(model_path)
 
             # Create a DataFrame from the input text
