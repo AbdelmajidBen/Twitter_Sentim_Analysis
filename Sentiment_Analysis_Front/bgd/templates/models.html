@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <link rel="stylesheet" href="{% static 'style.css' %}">
-    <script type="text/javascript" src="{% static 'script.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'models.css' %}">
+    <script type="text/javascript" src="{% static 'models.js' %}"></script>
     <title>Sentiment Analysis</title> <link rel="icon" type="image/png" href="{% static 'images/a3.png' %}">
 </head>
 <body>
@@ -22,7 +22,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
                 <div class="hori-selector"><div class="left"></div><div class="right"></div></div>
-                <li class="nav-item">
+                <li class="nav-item active">
                     <a class="nav-link" href="/dashboard"><i class="fas fa-tachometer-alt"></i>Dashboard</a>
                 </li>
                 <li class="nav-item ">
@@ -34,7 +34,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/testing"><i class="far fa-calendar-alt"></i>Testing</a>
                 </li>
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a class="nav-link" href="/models"><i class="far fa-chart-bar"></i>Models</a>
                 </li>
                 <li class="nav-item">
@@ -45,8 +45,172 @@
     </nav>
 
     <div class="homepage">
-        <h1 class="homepagetext">Prédiction de sentiments en temps réel des flux de données de réseau social Twitter</h1>
+        <h1 class="homepagetext">Le Process d'installation et d'activation</h1>
+
     </div>
+    <div class="container">
+        <div class="terminal-window" style="margin-right:30px;">
+            <div class="title-bar">
+                <div class="close-button"></div>
+                <div class="minimize-button"></div>
+                <div class="zoom-button"></div>
+            </div>
+            <div class="terminal-content">
+                <pre class="terminal-text">
+    <p>Last login: Tue May 13 10:24:37 on ttys001
+        The default interactive shell is now zsh.
+    </p>
+    <p>Welcome to macOS Catalina</p>
+
+    <p>Abdelmajid:~mac $ pip install kafka-python</p>
+    <p>Requirement already satisfied: kafka-python in /opt/anaconda3/lib/python3.11/site-packages (2.0.2)</p>
+
+    <p>Abdelmajid:~mac $ brew tap mongodb/brew</p>
+
+    <p>Abdelmajid:~mac $ brew install mongodb-community@7.0
+    </p>
+    <p>Abdelmajid:~mac $brew services start mongodb/brew/mongodb-community</p>
+
+    <p>Abdelmajid:~mac $ brew cask install docker</p>
+    <p>Abdelmajid:~mac $ docker --version</p>
+    <p>logout</p>
+                </pre>
+            </div>
+        </div>
+
+        <div class="terminal-window">
+            <div class="title-bar">
+                <div class="close-button"></div>
+                <div class="minimize-button"></div>
+                <div class="zoom-button"></div>
+            </div>
+            <div class="terminal-content">
+                <pre class="terminal-text">
+    <p>Last login: Tue May 13 10:24:37 on ttys002</p>
+    <p>Welcome to macOS Mojave</p>
+
+    <p>Abdelmajid:~mac $ cd /Users/mac/Downloads/Sentiment_Analysis-main</p>
+    <p>Abdelmajid:~mac $docker info ps </p>
+
+    <p>Abdelmajid:~mac $ docker compose build</p>
+    <p>Abdelmajid:~mac $ cd docker compose up</p>
+
+    <p>Running the Web <applet></applet></p>
+    <p>Abdelmajid:~mac $ cd Sentiment_Anlaysis_front</p>
+
+    <p>Abdelmajid:~mac $ source env/bin/activate</p>
+
+    <p>Abdelmajid:~mac $ python manage.py runserver</p>
+
+                </pre>
+            </div>
+        </div>
+    </div>
+<div class="homepage">
+    <div class="homepagetext">Les Modeles Utulisés</div>
+</div>
+
+<div class="card-container">
+    <div class="card">
+        <div class="card-content">
+            <h2>Modéle 1 : Support Vecteur Machine </h2>
+            <p>Les Support Vector Machines (SVM) sont utilisés pour la classification de données textuelles en transformant les textes en vecteurs de caractéristiques, souvent à l'aide de techniques comme TF-IDF. Ils trouvent des hyperplans qui séparent au mieux les différentes classes de textes.</p>
+            <br/>
+            <p class="animated-click-me" >Hover to display the accuarcy of the model Me</p>
+        </div>
+        <div class="new-content">
+            <h2 style="margin-left: 40px;">The Accuarcy for that model :</h2>
+            <p style="font-size: 22px; text-align: center;">Accuracy: 0.3674962395733625</p>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-content">
+            <h2>Modéle 2: Naîves Bayes</h2>
+            <p>Le modèle Naïve Bayes est couramment utilisé pour la classification de données textuelles grâce à sa simplicité et son efficacité. Il suppose l'indépendance conditionnelle des caractéristiques, ce qui permet de calculer la probabilité qu'un document appartienne à une certaine classe</p><br/>
+            <p class="animated-click-me" >Hover to display the accuarcy of the model Me</p>
+        </div>
+        <div class="new-content">
+            <h2 style="margin-left: 40px;">The Accuarcy for that model :</h2>
+            <p style="font-size: 22px; text-align: center;">Accuracy: 0.73321887762888</p>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-content">
+            <h2>Modéle 3: Random Forest</h2>
+            <p>Les Random Forests sont utilisées pour la classification de données textuelles en combinant plusieurs arbres de décision construits sur des sous-ensembles aléatoires des données. Chaque arbre vote pour une classe et la classe majoritaire est choisie.</p>
+            <br/>
+            <p class="animated-click-me" >Hover to display the accuarcy of the model Me</p>
+        </div>
+        <div class="new-content">
+            <h2 style="margin-left: 40px;">The Accuarcy for that model :</h2>
+            <p style="font-size: 22px; text-align: center;">Accuracy: 0.382127717762888</p>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-content">
+            <h2>Modéle 4 : Logistic Regression</h2>
+            <p>La régression logistique est une méthode pour modéliser la probabilité qu'une observation appartienne à une certaine classe. Dans le cas de données textuelles, la régression logistique peut être employée pour prédire la classe d'un texte en utilisant des caractéristiques dérivées du texte lui-même
+
+            </p>
+            <br/>
+            <p class="animated-click-me" >Hover to display the accuarcy of the model Me</p>
+        </div>
+        <div class="new-content">
+            <h2 style="margin-left: 40px;">The Accuarcy for that model :</h2>
+            <p style="font-size: 22px; text-align: center;">Accuarcy :0.8707780664569944</p>
+        </div>
+    </div>
+</div>
+
+        <div class="homepage">
+            <div class="homepagetext">L'Étape du Nettoyage et creation spark session</div>
+        </div>
+
+        <div class="custom-terminal">
+            <div class="title-bar">
+                <div class="close-button"></div>
+                <div class="minimize-button"></div>
+                <div class="zoom-button"></div>
+            </div>
+            <div class="terminal-content">
+                <pre class="terminal-text">
+    <span class="keyword">from</span> pyspark.sql <span class="keyword">import</span> SparkSession
+    <span class="keyword">from</span> pyspark.ml.feature <span class="keyword">import</span> CountVectorizer, RegexTokenizer, StopWordsRemover, StringIndexer
+    <span class="keyword">from</span> pyspark.ml.classification <span class="keyword">import</span> NaiveBayes
+    <span class="keyword">from</span> pyspark.ml <span class="keyword">import</span> Pipeline
+    <span class="keyword">from</span> pyspark.ml.evaluation <span class="keyword">import</span> MulticlassClassificationEvaluator
+
+    <span class="comment"># Create a Spark session</span>
+    spark = SparkSession.builder \
+        .appName(<span class="string">"Sentiment Analysis with Naive Bayes"</span>) \
+        .getOrCreate()
+
+    <span class="comment"># Load the CSV file into a DataFrame</span>
+    file_path = <span class="string">'../twitter_training.csv'</span>
+    df = spark.read.csv(file_path, header=False, inferSchema=True)
+
+    <span class="comment"># Define column names</span>
+    df = df.withColumnRenamed(<span class="string">'_c0'</span>, <span class="string">'ID'</span>) \
+           .withColumnRenamed(<span class="string">'_c1'</span>, <span class="string">'Topic'</span>) \
+           .withColumnRenamed(<span class="string">'_c2'</span>, <span class="string">'Sentiment'</span>) \
+           .withColumnRenamed(<span class="string">'_c3'</span>, <span class="string">'Text'</span>)
+
+    <span class="comment"># Drop rows with null values</span>
+    df = df.dropna()
+
+    <span class="comment"># Prepare features and label</span>
+    tokenizer = RegexTokenizer(inputCol=<span class="string">'Text'</span>, outputCol=<span class="string">'words'</span>, pattern=<span class="string">'\\W'</span>)
+    remover = StopWordsRemover(inputCol=<span class="string">'words'</span>, outputCol=<span class="string">'filtered_words'</span>)
+    vectorizer = CountVectorizer(inputCol=<span class="string">'filtered_words'</span>, outputCol=<span class="string">'features'</span>)
+    indexer = StringIndexer(inputCol=<span class="string">'Sentiment'</span>, outputCol=<span class="string">'label'</span>)
+                </pre>
+            </div>
+        </div>
+
+        <div class="wave-divider"></div>
+        <div class="section-content"></div>
+    <!-- New Section -->
+
 
 </body>
 </html>

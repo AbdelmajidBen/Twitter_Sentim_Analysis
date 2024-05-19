@@ -129,137 +129,7 @@ i {
 	
 }
 
-.tweetstitle{
-    font-family: 'Times New Roman', Times, serif;
-    text-align: center;
-    font-size: 30px;
-    margin-top: 20px;
-    color:#476554;
-}
-.introtext{
-    text-align: center;
-    margin-top: 20px;
-    font-family: 'Times New Roman', Times, serif;
-    color: rgb(10, 6, 49);
-    font-size: 16px;
-}
-/* the table view*/
-.container {
-    margin-top: 20px;
-    padding: 20px;
-    text-align: center; /* Center-align table content */
-}
 
-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-family: 'Times New Roman', Times, serif; /* Set font family to Times New Roman */
-}
-
-th, td {
-    padding: 10px;
-    text-align: center; /* Center-align table cells */
-    border: 1px solid #ddd;
-}
-
-th {
-    background-color: #476554;
-    color: #fff;
-}
-
-tbody tr:hover {
-    background-color: rgba(255, 255, 255, 0.3);
-}
-
-/*
-the buttons in the data table 
-*/
-.current{
-    color: #476554;
-    margin-right: 15px;
-    font-family: 'Times New Roman', Times, serif;
-}
-.pagination {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px;
-}
-
-.nav-btn {
-    color: #FFF;
-    position: relative;
-    margin: 0 5px;
-    padding: 10px 20px;
-    border: none;
-    background-color: #3C3C3C;
-    cursor: pointer;
-    overflow: hidden;
-    transition: all 0.5s;
-    outline: none; /* Remove default focus outline */
-}
-
-.nav-btn span {
-    z-index: 2;
-    display: block;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-}
-
-.nav-btn::before,
-.nav-btn::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    transition: all 0.5s;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    background-color: rgba(255, 255, 255, 0.1);
-}
-
-.nav-btn:hover::before {
-    transform: rotate(-45deg);
-    background-color: rgba(255, 255, 255, 0);
-}
-
-.nav-btn:hover::after {
-    transform: rotate(45deg);
-    background-color: rgba(255, 255, 255, 0);
-}
-
-/*animation for buttons*/
-.pagination-link {
-    color: #b8860b; /* Darker gold color */
-    text-decoration: none;
-    position: relative;
-    margin-right: 10px; /* Add space between pagination links */
-    font-family: 'Times New Roman', Times, serif; /* Set font family to Times New Roman */
-    transition: color 0.3s ease; /* Smooth color transition on hover */
-}
-
-.pagination-link:hover {
-    color: #b8860b; /* Maintain darker gold color on hover */
-}
-
-.pagination-link::after {
-    content: '';
-    position: absolute;
-    bottom: -2px; /* Position the underline below the text */
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background-color: green;
-    transform: scaleX(0); /* Start with zero width */
-    transition: transform 0.3s ease; /* Smooth transition for underline */
-}
-
-.pagination-link:hover::after {
-    transform: scaleX(1); /* Expand to full width on hover */
-}
 
 
 @media(min-width: 992px){
@@ -316,4 +186,71 @@ the buttons in the data table
 		bottom: -25px;
 		left: -25px;
 	}
+}
+
+.animated-input {
+    width: 300px;
+    padding: 10px;
+    border: 2px solid #ccc;
+    transition: border-color 0.3s ease;
+}
+
+.animated-input:focus {
+    border-color: #007bff; /* Change border color on focus */
+}
+
+.animated-button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.animated-button:hover {
+    background-color: #0056b3; /* Change button background color on hover */
+}
+
+.mainone{
+    font-family: 'Times New Roman', Times, serif;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.theform{
+    margin-top: 30px;
+}
+.theform input{
+    margin-right: 30px;
+    width: 70%;
+    border-radius: 30px;
+    height: 40px;
+}
+.homepage2ndtext {
+    color: #554746; /* Mustard color */
+	margin-top: 20px;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-size: 34px; /* Adjust font size as needed */
+    position: relative; /* Establish positioning context for pseudo-element */
+    display: inline-block; /* Ensure element only occupies necessary width */
+    text-decoration: none; /* Remove default underline */
+
+    /* Animation for underline */
+    transition: color 0.3s ease-in-out; /* Smooth color transition */
+}
+
+.homepage2ndtext::after {
+    content: ''; /* Create pseudo-element for underline */
+    position: absolute;
+    left: 0;
+    bottom: -3px; /* Adjust distance of underline from text */
+    width: 0; /* Start with no width */
+    height: 2px; /* Thickness of underline */
+    background-color: #800020; /* Burgundy color */
+    transition: width 0.3s ease-in-out; /* Smooth width transition */
+}
+
+.homepage2ndtext:hover::after {
+    width: 100%; /* Expand width to 100% on hover */
 }

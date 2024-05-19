@@ -1,0 +1,108 @@
+<div class="section-content">
+    <div class="titledoc">Decouvrez Les Documentation :</div>
+        <div class="cardin">
+            <div class="cardin-content">
+                <h2>Documentation Docker</h2>
+                <p>Pour explorer la Documentation Du docker suivez le lien ci dessous <a href="https://docs.docker.com/" target="_blank"><br/>Clickez - ici</a></p>
+                <img src="{% static 'images/a33.png' %}"class="cardin-image" >
+            </div>
+            
+        </div>
+        <div class="cardin">
+            <div class="cardin-content">
+                <h2>Documentation Github</h2>
+                <p>Pour explorer la Documentation Du Github suivez le lien ci dessous 
+                <a href="https://www.mongodb.com/docs/"  target="_blank"><br/>Clickez - ici</a></p>
+                <img src="{% static 'images/a35.png' %}"  width="50%"
+                height="50%">
+            </div>
+        </div>
+        <div class="cardin">
+            <div class="cardin-content">
+                <h2>Documentation Kafka</h2>
+                <p>Pour explorer la Documentation Du kafka suivez le lien ci dessous 
+                <a href="ttps://kafka.apache.org/documentation/" target="_blank"><br/>Clickez - ici</a></p>
+                <img src="{% static 'images/a37.png' %}" 
+                height="130px" width="70px" >
+            </div>
+        </div>
+
+        <div class="cardin">
+            <div class="cardin-content">
+                <h2>Documentation Mongodb</h2>
+                <p>Pour explorer la Documentation Du Mongodb suivez le lien ci dessous 
+                <a href="ttps://kafka.apache.org/documentation/" target="_blank"><br/>Clickez - ici</a></p>
+                <img src="{% static 'images/a38.png' %}" 
+                height="70px" width="200px" >
+            </div>
+        </div>
+
+        <div class="cardin">
+            <div class="cardin-content">
+                <h2>Documentation Spark</h2>
+                <p>Pour explorer la Documentation Du Spark suivez le lien ci dessous 
+                <a href="ttps://kafka.apache.org/documentation/" target="_blank"><br/>Clickez - ici</a></p>
+                <img src="{% static 'images/a36.png' %}" 
+                height="130px" width="130px" >
+            </div>
+        </div>
+
+        <style>
+            .cardin {
+                width: 300px;
+                height: 300px;
+                background-color: #ccc;
+                border-radius: 30px;
+                overflow: hidden;
+                position: relative;
+                border: 2px solid #ccc;
+                transition: border-color 0.3s ease;
+                animation: slideInLeftAnimation 1s ease;
+                animation-fill-mode: forwards; /* Keeps the last keyframe state */
+                margin-left: 75%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-bottom: 20px;
+            }
+            
+            .cardin-content {
+                padding: 10px;
+                text-align: center; /* Center align content within the card */
+            }
+            
+            .cardin h2 {
+                color: #476554;
+                font-size: 20px;
+                margin: 0; /* Remove default margin to ensure centered properly */
+            }
+            
+            .cardin:hover {
+                border-color: #17105a; /* Dark blue color on hover */
+            }
+            
+            /* Animation keyframes */
+            @keyframes slideInLeftAnimation {
+                from {
+                    transform: translateX(-100%);
+                }
+                to {
+                    transform: translateX(0);
+                }
+            }
+            
+            /* Class to trigger animation only when in view */
+            .cardin.in-view {
+                animation-play-state: running; /* Resume animation when in view */
+            }
+            
+            .cardin-image {
+                width: 100%; /* Set image width to 100% of its container */
+                height: auto; /* Maintain aspect ratio */
+                display: block; /* Ensure image behaves like a block element */
+                border-radius: 10px; /* Optional: Add border-radius to image */
+            }
+            
+            /*installation process*/
+            
+        </style>
