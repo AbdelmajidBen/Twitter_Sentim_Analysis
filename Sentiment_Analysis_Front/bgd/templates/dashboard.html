@@ -78,9 +78,40 @@
 
 
 <script>
+    var timestamps = {{ timestamps|safe }};
+    var predictions = {{ predictions|safe }};
+    var all_prediction = {{ all_prediction }};
+    var confidence = {{ confidence }};
+    var cpu_usage = {{ cpu_usage }};
+    var memory_usage = {{ memory_usage }};
+    {% comment %} var total_prediction = {{ total_prediction|safe }} {% endcomment %}
+    
+    // Function to count occurrences of each class
+    function countClasses(predictions) {
+        var counts = {};
+        predictions.forEach(function(prediction) {
+            counts[prediction] = (counts[prediction] || 0) + 1;
+        });
+        return counts;
+    }
+
+    // Call the function to get the counts of each class
+    var classCounts = countClasses(all_prediction);
+
+    // Extract class labels and counts for the chart data
+    var classLabels = Object.keys(classCounts);
+    var classValues = Object.values(classCounts);
+
+    var data_confidence = confidence.map(function(y, index) {
+        return { x: index, y: y };
+    });
+
+    console.log(memory_usage);
+    console.log(cpu_usage);
+
     var barChart, pieChart, scatterChart, lineChart;
 
-    function initializeCharts() {
+    $(document).ready(function() {
         var ctx1 = document.getElementById('bar-chart').getContext('2d');
         barChart = new Chart(ctx1, {
             type: 'bar',
@@ -98,7 +129,9 @@
                     y: {
                         beginAtZero: true
                     }
-                }
+                },
+            
+                
             }
         });
 
@@ -179,7 +212,7 @@
             options: {
                 legend: {
             display: false
-        },
+            },
                 scales: {
                     xAxes: [{
                         type: 'time', // Assuming timestamps are date/time values
@@ -197,76 +230,50 @@
                 }
             }
         });
-    }
-
-    $(document).ready(function() {
-        // Function to fetch data from the server and update plots
-        function updatePlots() {
-            $.ajax({
-                url: '/dashboard',  // URL to your Django view
-                type: 'GET',
-                success: function(data) {
-                    // Clear existing charts
-                    if (barChart) barChart.update();
-                    if (pieChart) pieChart.destroy();
-                    if (scatterChart) scatterChart.destroy();
-                    if (lineChart) lineChart.destroy();
-
-                    // Replace the content of the canvas div
-                    $("#canvas").html($(data).find("#canvas").html());
-                    
-                    // Re-initialize charts
-                    initializeCharts();
-                    
-                    // Call updatePlots function recursively after a certain interval
-                    setTimeout(updatePlots, 5000);  // Update every 5 seconds (adjust as needed)
-                },
-                error: function(xhr, status, error) {
-                    console.error('Error fetching data:', error);
-                }
-            });
-        }
-
-        // Initial call to updatePlots function
         updatePlots();
-    });
-</script>
+    })
 
-<script>
-    var timestamps = {{ timestamps|safe }};
-    var predictions = {{ predictions|safe }};
-    var all_prediction = {{ all_prediction }};
-    var confidence = {{ confidence }};
-    var cpu_usage = {{ cpu_usage }};
-    var memory_usage = {{ memory_usage }};
-    {% comment %} var total_prediction = {{ total_prediction|safe }} {% endcomment %}
     
-    // Function to count occurrences of each class
-    function countClasses(predictions) {
-        var counts = {};
-        predictions.forEach(function(prediction) {
-            counts[prediction] = (counts[prediction] || 0) + 1;
+    // Function to fetch data from the server and update plots
+    function updatePlots() {
+        $.ajax({
+            url: '/dashboard/data',  // URL to your Django view
+            type: 'GET',
+            success: function(data) {
+                console.log(lineChart.data.labels)
+                barChart.data.labels = data.timestamps
+                barChart.data.datasets[0].data = data.predictions
+                barChart.update()
+
+                var classCounts_update = countClasses(data.all_prediction);
+                var classLabels_update = Object.keys(classCounts_update);
+                var classValues_update = Object.values(classCounts_update);
+                pieChart.data.datasets[0].data = classValues_update
+                pieChart.update()
+
+                var data_confidence_update = data.confidence.map(function(y, index) {
+                    return { x: index, y: y };
+                });
+                scatterChart.data.datasets[0].data = data_confidence_update
+                scatterChart.update()
+
+                lineChart.data.labels = data.timestamps
+                lineChart.data.datasets[0].data = data.cpu_usage
+                lineChart.data.datasets[1].data = data.memory_usage
+                lineChart.update()
+
+                
+                // Call updatePlots function recursively after a certain interval
+                setTimeout(updatePlots, 1000);  // Update every 5 seconds (adjust as needed)
+            },
+            error: function(xhr, status, error) {
+                console.error('Error fetching data:', error);
+            }
         });
-        return counts;
     }
 
-    // Call the function to get the counts of each class
-    var classCounts = countClasses(all_prediction);
 
-    // Extract class labels and counts for the chart data
-    var classLabels = Object.keys(classCounts);
-    var classValues = Object.values(classCounts);
-
-    var data_confidence = confidence.map(function(y, index) {
-        return { x: index, y: y };
-    });
-
-    console.log(memory_usage);
-    console.log(cpu_usage);
-
-    // Initialize the charts on initial page load
-    $(document).ready(function() {
-        initializeCharts();
-    });
+    
 </script>
+
 </html>

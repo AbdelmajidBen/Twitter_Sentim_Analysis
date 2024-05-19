@@ -12,6 +12,7 @@ from collections import defaultdict
 from django.shortcuts import render
 from django.http import HttpResponse
 from pyspark.sql import SparkSession
+from django.http import JsonResponse
 from pyspark.ml import PipelineModel
 
 def say_hello(request):
@@ -51,6 +52,41 @@ def dashboard(request):
     }
 
     return render(request, 'dashboard.html', context)
+
+def dashboard_data(request):
+    # Retrieve all tweets from MongoDB
+    tweets = Tweet.objects.all()
+
+    # Initialize lists to store timestamps, predictions, and confidence
+    timestamps = []
+    predictions = []
+    confidence = []
+    total_prediction = []
+    confidence = []
+    cpu_usage = []
+    memory_usage = []
+
+    # Extract timestamp, prediction, and confidence from each tweet
+    for tweet in tweets:
+        timestamps.append(str(tweet.timestamp))
+        predictions.append(tweet.prediction)
+        confidence.append(max(tweet.rawPredictionArray))
+        cpu_usage.append(tweet.cpu_usage)
+        memory_usage.append(tweet.memory_usage)
+
+
+    # Now you can use these lists for further processing or rendering in your view
+    context = {
+        'timestamps': timestamps[-10:],
+        'predictions': predictions[-10:],
+        'confidence': confidence[-10:],
+        'all_prediction' : predictions,
+        'confidence': confidence,
+        'cpu_usage': cpu_usage,
+        'memory_usage': memory_usage,
+    }
+
+    return JsonResponse(context)
 
 
 def architecture(request):

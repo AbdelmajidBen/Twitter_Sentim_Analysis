@@ -221,12 +221,7 @@ i {
 .theform{
     margin-top: 30px;
 }
-.theform input{
-    margin-right: 30px;
-    width: 70%;
-    border-radius: 30px;
-    height: 40px;
-}
+
 .homepage2ndtext {
     color: #554746; /* Mustard color */
 	margin-top: 20px;
