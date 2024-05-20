@@ -9,6 +9,14 @@ To run this project, you need to have the following installed:
 - Apache Zookeeper
 - Python (version >= 3.6)
 - Pipenv (for managing Python dependencies)
+- pymongo ==1.3.6
+- pytz
+- djongo
+- mongodb
+- docker
+- pyspark
+- matplotlib
+- numpy pandas
 
 ## Installation
 1. Clone this repository:
