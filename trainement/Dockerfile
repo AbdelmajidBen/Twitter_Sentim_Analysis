@@ -8,7 +8,7 @@ RUN /opt/bitnami/spark/bin/spark-shell --packages org.mongodb.spark:mongo-spark-
 RUN pip install numpy pandas psutil
 
 
-COPY trainement/twitter_training.csv /root/twitter_training.csv
+COPY trainement/twitter_validation.csv /root/twitter_training.csv
 #COPY trainement/model/ /root/model
 COPY trainement/preprocessing_pipeline1 /root/pipeline
 COPY trainement/trainement.py /root/trainement.py
