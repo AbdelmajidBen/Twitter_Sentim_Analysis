@@ -1,3 +1,4 @@
+```markdown
 # Real-Time Twitter Sentiment Analysis with Kafka, PySpark, and Machine Learning
 
 ## Introduction
@@ -9,53 +10,86 @@ To run this project, you need to have the following installed:
 - Apache Zookeeper
 - Python (version >= 3.6)
 - Pipenv (for managing Python dependencies)
-- pymongo ==1.3.6
+- pymongo == 1.3.6
 - pytz
 - djongo
 - mongodb
 - docker
 - pyspark
 - matplotlib
-- numpy pandas
+- numpy
+- pandas
 
 ## Installation
 1. Clone this repository:
    ```bash
    git clone https://github.com/your_username/twitter-sentiment-analysis.git
-
    cd twitter-sentiment-analysis
+   ```
 2. Install Python dependencies using Pipenv:
    ```bash
    pipenv install
-## Starting Kafka and Zookeeper
-  ### Start Zookeeper:
-    bin/zookeeper-server-start.sh config/zookeeper.properties
-  ### Start Kafka:
-    bin/kafka-server-start.sh config/server.properties
-## Files & Their Purposes:
-  - producer.py: Python script for reading tweets from a CSV file and producing them to a Kafka topic.
-  - consumer.py: Python script for consuming tweets from a Kafka topic and performing sentiment analysis using PySpark.
-  - twitter_analysis.py: Python script for preprocessing Twitter data, training machine learning models, and predicting sentiment.
-  - t1.py: Python script containing the logistic regression model training code for sentiment analysis.
-## Execution:
-  1.  Run the producer script to start producing tweets to the Kafka topic:
-     ```bash
-     python producer.py
-  2. Run the consumer script to start consuming tweets from the Kafka topic and perform sentiment analysis:
-        ```bash
-     python consumer.py
-     
-  3. Execute the twitter_analysis.py script to preprocess data, train models, and make real-time predictions:
-        ```bash
-     python twitter_analysis.py
-     
-  4. Execute the t1.py script to train a logistic regression model for sentiment analysis:
-        ```bash
-     python t1.py
-     
-## Author :
-Abdelmajid Benjelloun / Ayoub Bakkali / Salma Nidar 
+   ```
+
+## Starting the Project
+
+1. Build the Docker containers:
+   ```bash
+   docker compose build
+   ```
+
+2. Start the Docker containers:
+   ```bash
+   docker compose up
+   ```
+
+   > **Note:** Make sure to install MongoDB (e.g., `brew install mongodb`). Use the following credentials for login: `admin` and `password 1234`.
+
+## Starting the Web App
+
+1. Navigate to the front-end directory:
+   ```bash
+   cd sentiment_analysis_front
+   ```
+
+2. Run the development server:
+   ```bash
+   python manage.py runserver
+   ```
+## Files and Purpose
+
+### Kafka_Streaming/producer
+- **Dockerfile**: Defines the environment for the Kafka producer.
+- **producer.py**: Sends tweets from `twitter_validation.csv` to the Kafka topic.
+- **twitter_validation.csv**: A dataset used by the producer to send sample tweets.
+
+### ML
+- **pipeline**: Contains the pipeline configurations for data processing.
+- **models**: Logistic regression models for sentiment analysis.
+
+### mongo
+- **MongoDB**: Stores processed tweet data after sentiment analysis.
+
+### sentiment_analysis_front
+- **The web application**: Built with Django to visualize sentiment analysis results.
+
+### traitement
+- **Dockerfile**: Defines the environment for the Kafka consumer.
+- **consumer.py**: Processes incoming tweets from Kafka, performs sentiment analysis, and stores results in MongoDB.
+- **save_pipeline.ipynb**: Jupyter notebook for saving the machine learning pipeline.
+
+### models.ipynb
+- **Overview of the models**: A Jupyter notebook detailing the machine learning models used for sentiment analysis.
+
+### twitter_training.csv
+- **Training dataset**: Used for training the machine learning models.
+
+
+## Authors
+- Abdelmajid Benjelloun
+- Ayoub Bakkali
+- Salma Nidar
 
 ## License
-This project is licensed under the MIT License. See the LICENSE file for details.
-
+This project is licensed under the MIT License.
+```
