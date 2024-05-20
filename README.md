@@ -1,4 +1,4 @@
-```markdown
+
 # Real-Time Twitter Sentiment Analysis with Kafka, PySpark, and Machine Learning
 
 ## -Introduction
