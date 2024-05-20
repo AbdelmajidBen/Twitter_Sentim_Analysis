@@ -1,10 +1,10 @@
 ```markdown
 # Real-Time Twitter Sentiment Analysis with Kafka, PySpark, and Machine Learning
 
-## Introduction
+## -Introduction
 This project aims to perform real-time sentiment analysis on Twitter data using Apache Kafka, PySpark, and machine learning models. The project includes modules for data ingestion, preprocessing, model training, real-time prediction, and logging of results in MongoDB.
 
-## Requirements
+## -Requirements
 To run this project, you need to have the following installed:
 - Apache Kafka
 - Apache Zookeeper
@@ -20,7 +20,7 @@ To run this project, you need to have the following installed:
 - numpy
 - pandas
 ```
-## Installation
+## -Installation
 1. Clone this repository:
    ```bash
    git clone https://github.com/your_username/twitter-sentiment-analysis.git
@@ -31,7 +31,7 @@ To run this project, you need to have the following installed:
    pipenv install
    ```
 
-## Starting the Project
+## -Starting the Project
 
 1. Build the Docker containers:
    ```bash
@@ -45,7 +45,7 @@ To run this project, you need to have the following installed:
 
    > **Note:** Make sure to install MongoDB (e.g., `brew install mongodb`). Use the following credentials for login: `admin` and `password 1234`.
 
-## Starting the Web App
+## -Starting the Web App
 
 1. Navigate to the front-end directory:
    ```bash
@@ -56,32 +56,32 @@ To run this project, you need to have the following installed:
    ```bash
    python manage.py runserver
    ```
-## Files and Purpose
+## -Files and Purpose
 
-### Kafka_Streaming/producer
+### -Kafka_Streaming/producer
 - **Dockerfile**: Defines the environment for the Kafka producer.
 - **producer.py**: Sends tweets from `twitter_validation.csv` to the Kafka topic.
 - **twitter_validation.csv**: A dataset used by the producer to send sample tweets.
 
-### ML
+### -ML
 - **pipeline**: Contains the pipeline configurations for data processing.
 - **models**: Logistic regression models for sentiment analysis.
 
-### mongo
+### -Mongo
 - **MongoDB**: Stores processed tweet data after sentiment analysis.
 
-### sentiment_analysis_front
+### -Sentiment_analysis_front
 - **The web application**: Built with Django to visualize sentiment analysis results.
 
-### traitement
+### -Traitement
 - **Dockerfile**: Defines the environment for the Kafka consumer.
 - **consumer.py**: Processes incoming tweets from Kafka, performs sentiment analysis, and stores results in MongoDB.
 - **save_pipeline.ipynb**: Jupyter notebook for saving the machine learning pipeline.
 
-### models.ipynb
+### -Models.ipynb
 - **Overview of the models**: A Jupyter notebook detailing the machine learning models used for sentiment analysis.
 
-### twitter_training.csv
+### -Twitter_training.csv
 - **Training dataset**: Used for training the machine learning models.
 
 
@@ -92,4 +92,4 @@ To run this project, you need to have the following installed:
 
 ## License
 This project is licensed under the MIT License.
-```
+
